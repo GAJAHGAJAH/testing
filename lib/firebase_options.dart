@@ -87,4 +87,5 @@ class DefaultFirebaseOptions {
     storageBucket: 'testing-4327c.firebasestorage.app',
     measurementId: 'G-1MKZC4JM6P',
   );
+
 }

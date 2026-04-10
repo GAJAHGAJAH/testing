@@ -29,6 +29,13 @@
             {
               "client_id": "547646714637-juc278dl0ma8cmkm3p4qjbeav1mt71tl.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "547646714637-n1vqtdrcak1p8m1ntpsgh9teadplitct.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.flutterAuthBackendApp"
+              }
             }
           ]
         }
@@ -58,6 +65,13 @@
             {
               "client_id": "547646714637-juc278dl0ma8cmkm3p4qjbeav1mt71tl.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "547646714637-n1vqtdrcak1p8m1ntpsgh9teadplitct.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.flutterAuthBackendApp"
+              }
             }
           ]
         }
