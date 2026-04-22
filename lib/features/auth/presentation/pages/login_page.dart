@@ -1,20 +1,16 @@
-// ✅ IMPORT YANG BENAR (4 level naik)
+import 'package:firebase_auth/firebase_auth.dart' hide AuthProvider;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:email_validator/email_validator.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-
-// Import Provider
 import '../providers/auth_provider.dart';
-
-// Import Core (4 level: pages → presentation → auth → features → lib → core)
+import '../widgets/custom_text_field.dart';
+import '../widgets/custom_button.dart';
+import '../widgets/loading_overlay.dart';
+import '../widgets/auth_header.dart';
+import '../widgets/divider_with_text.dart';
+import '../widgets/google_sign_in_button.dart';
 import '../../../../core/routes/app_router.dart';
-import '../../../../core/widgets/custom_text_field.dart';
-import '../../../../core/widgets/custom_button.dart';
-import '../../../../core/widgets/loading_overlay.dart';
-import '../../../../core/widgets/auth_header.dart';
-import '../../../../core/widgets/divider_with_text.dart';
-import '../../../../core/widgets/google_sign_in_button.dart';
+
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
