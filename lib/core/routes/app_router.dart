@@ -4,7 +4,7 @@ import 'package:flutter_auth_backend_app/features/auth/presentation/pages/regist
 import 'package:flutter_auth_backend_app/features/auth/presentation/pages/verify_email_page.dart';
 import 'package:flutter_auth_backend_app/features/dashboard/presentation/pages/dashboard_page.dart';
 import 'package:flutter_auth_backend_app/features/splash/presentation/pages/splash_page.dart';
-import 'package:flutter_auth_backend_app/core/guards/auth_guard.dart';
+import 'package:flutter_auth_backend_app/guards/auth_guard.dart';
 
 class AppRouter {
   static const String splash = '/';

@@ -1,17 +1,23 @@
-import 'package:firebase_auth/firebase_auth.dart';
+// ✅ IMPORT YANG BENAR (4 level naik)
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:email_validator/email_validator.dart';
-import 'package:flutter_auth_backend_app/features/auth/presentation/widgets/custom_text_field.dart';
-import 'package:flutter_auth_backend_app/features/auth/presentation/widgets/custom_button.dart';
-import 'package:flutter_auth_backend_app/features/auth/presentation/widgets/loading_overlay.dart';
-import 'package:flutter_auth_backend_app/features/auth/presentation/widgets/auth_header.dart';
-import 'package:flutter_auth_backend_app/features/auth/presentation/widgets/divider_with_text.dart';
-import 'package:flutter_auth_backend_app/features/auth/presentation/widgets/google_sign_in_button.dart';
-import 'package:flutter_auth_backend_app/core/routes/app_router.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
+// Import Provider
+import '../providers/auth_provider.dart';
+
+// Import Core (4 level: pages → presentation → auth → features → lib → core)
+import '../../../../core/routes/app_router.dart';
+import '../../../../core/widgets/custom_text_field.dart';
+import '../../../../core/widgets/custom_button.dart';
+import '../../../../core/widgets/loading_overlay.dart';
+import '../../../../core/widgets/auth_header.dart';
+import '../../../../core/widgets/divider_with_text.dart';
+import '../../../../core/widgets/google_sign_in_button.dart';
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
+
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
@@ -24,17 +30,20 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   void dispose() {
-    [_emailCtrl, _passCtrl].forEach((c) => c.dispose());
+    _emailCtrl.dispose();
+    _passCtrl.dispose();
     super.dispose();
   }
 
   Future<void> _loginEmail() async {
     if (!_formKey.currentState!.validate()) return;
+    
     final auth = context.read<AuthProvider>();
     final ok = await auth.loginWithEmail(
       email: _emailCtrl.text.trim(),
       password: _passCtrl.text,
     );
+    
     if (!mounted) return;
     _handleLoginResult(ok, auth);
   }
@@ -42,22 +51,24 @@ class _LoginPageState extends State<LoginPage> {
   Future<void> _loginGoogle() async {
     final auth = context.read<AuthProvider>();
     final ok = await auth.loginWithGoogle();
+    
     if (!mounted) return;
     _handleLoginResult(ok, auth);
   }
 
   void _handleLoginResult(bool ok, AuthProvider auth) {
-    if (ok)
+    if (ok) {
       Navigator.pushReplacementNamed(context, AppRouter.dashboard);
-    else if (auth.status == AuthStatus.emailNotVerified)
+    } else if (auth.status == AuthStatus.emailNotVerified) {
       Navigator.pushReplacementNamed(context, AppRouter.verifyEmail);
-    else
+    } else {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(auth.errorMessage ?? 'Login gagal'),
           backgroundColor: Colors.red,
         ),
       );
+    }
   }
 
   void _showForgotPasswordDialog(BuildContext context) {
@@ -94,6 +105,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     final isLoading = context.watch<AuthProvider>().isLoading;
+    
     return LoadingOverlay(
       isLoading: isLoading,
       message: 'Masuk ke akun...',
@@ -112,6 +124,8 @@ class _LoginPageState extends State<LoginPage> {
                     subtitle: 'Masuk ke akun Anda untuk melanjutkan',
                   ),
                   const SizedBox(height: 32),
+                  
+                  // Email Field
                   CustomTextField(
                     label: 'Email',
                     hint: 'contoh@email.com',
@@ -124,7 +138,10 @@ class _LoginPageState extends State<LoginPage> {
                       return null;
                     },
                   ),
+                  
                   const SizedBox(height: 16),
+                  
+                  // Password Field
                   CustomTextField(
                     label: 'Password',
                     hint: 'Masukkan password',
@@ -137,10 +154,12 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       onPressed: () => setState(() => _showPass = !_showPass),
                     ),
-                    validator: (v) =>
-                        (v?.isEmpty ?? true) ? 'Wajib diisi' : null,
+                    validator: (v) => (v?.isEmpty ?? true) ? 'Wajib diisi' : null,
                   ),
+                  
                   const SizedBox(height: 8),
+                  
+                  // Forgot Password
                   Align(
                     alignment: Alignment.centerRight,
                     child: TextButton(
@@ -148,20 +167,32 @@ class _LoginPageState extends State<LoginPage> {
                       child: const Text('Lupa Password?'),
                     ),
                   ),
+                  
                   const SizedBox(height: 8),
+                  
+                  // Login Button
                   CustomButton(
                     label: 'Masuk',
                     onPressed: _loginEmail,
                     isLoading: isLoading,
                   ),
+                  
                   const SizedBox(height: 20),
+                  
+                  // Divider
                   const DividerWithText(text: 'atau masuk dengan'),
+                  
                   const SizedBox(height: 20),
+                  
+                  // Google Sign In
                   GoogleSignInButton(
                     onPressed: _loginGoogle,
                     isLoading: isLoading,
                   ),
+                  
                   const SizedBox(height: 24),
+                  
+                  // Register Link
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
