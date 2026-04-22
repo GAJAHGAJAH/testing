@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:email_validator/email_validator.dart';
-import 'package:flutter_auth_backend_app/core/widgets/custom_text_field.dart';
-import 'package:flutter_auth_backend_app/core/widgets/custom_button.dart';
-import 'package:flutter_auth_backend_app/core/widgets/loading_overlay.dart';
-import 'package:flutter_auth_backend_app/core/widgets/auth_header.dart';
+import 'package:flutter_auth_backend_app/features/auth/presentation/widgets/custom_text_field.dart';
+import 'package:flutter_auth_backend_app/features/auth/presentation/widgets/custom_button.dart';
+import 'package:flutter_auth_backend_app/features/auth/presentation/widgets/loading_overlay.dart';
+import 'package:flutter_auth_backend_app/features/auth/presentation/widgets/auth_header.dart';
 import 'package:flutter_auth_backend_app/features/auth/presentation/providers/auth_provider.dart';
 import 'package:flutter_auth_backend_app/core/routes/app_router.dart';
 

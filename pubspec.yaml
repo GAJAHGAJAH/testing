@@ -37,7 +37,7 @@ dependencies:
   provider: ^6.1.5+1
   firebase_core: ^4.7.0
   firebase_auth: ^6.4.0
-  google_sign_in: ^7.2.0
+  google_sign_in: ^6.2.1
   dio: ^5.9.2
   flutter_secure_storage: ^10.0.0
   email_validator: ^3.0.0
@@ -83,7 +83,7 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   # fonts:
-  #   - family: Schyler
+  #   - family: SchylerA
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf
