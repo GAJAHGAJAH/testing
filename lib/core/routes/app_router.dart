@@ -4,6 +4,8 @@ import 'package:flutter_auth_backend_app/features/auth/presentation/pages/regist
 import 'package:flutter_auth_backend_app/features/auth/presentation/pages/verify_email_page.dart';
 import 'package:flutter_auth_backend_app/features/dashboard/presentation/pages/dashboard_page.dart';
 import 'package:flutter_auth_backend_app/features/splash/presentation/pages/splash_page.dart';
+import 'package:flutter_auth_backend_app/features/cart/presentation/pages/cart_page.dart';
+import 'package:flutter_auth_backend_app/features/cart/presentation/pages/checkout_page.dart';
 import 'package:flutter_auth_backend_app/guards/auth_guard.dart';
 
 class AppRouter {
@@ -12,6 +14,8 @@ class AppRouter {
   static const String register = '/register';
   static const String verifyEmail = '/verify-email';
   static const String dashboard = '/dashboard';
+  static const String cart = '/cart';
+  static const String checkout = '/checkout';
 
   static Map<String, WidgetBuilder> get routes => {
         splash: (_) => const SplashPage(),
@@ -19,5 +23,7 @@ class AppRouter {
         register: (_) => const RegisterPage(),
         verifyEmail: (_) => const VerifyEmailPage(),
         dashboard: (_) => const AuthGuard(child: DashboardPage()),
+        cart: (_) => const AuthGuard(child: CartPage()),
+        checkout: (_) => const AuthGuard(child: CheckoutPage()),
       };
 }
