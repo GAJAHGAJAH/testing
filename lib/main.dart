@@ -5,6 +5,7 @@ import 'package:flutter_auth_backend_app/firebase_options.dart';
 import 'package:flutter_auth_backend_app/core/routes/app_router.dart';
 import 'package:flutter_auth_backend_app/features/auth/presentation/providers/auth_provider.dart';
 import 'package:flutter_auth_backend_app/features/dashboard/presentation/providers/product_provider.dart';
+import 'package:flutter_auth_backend_app/features/cart/presentation/providers/cart_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,6 +16,7 @@ void main() async {
       providers: [
         ChangeNotifierProvider(create: (_) => AuthProvider()),
         ChangeNotifierProvider(create: (_) => ProductProvider()),
+        ChangeNotifierProvider(create: (_) => CartProvider()),
       ],
       child: const MyApp(),
     ),
